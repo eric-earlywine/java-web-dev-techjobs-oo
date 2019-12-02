@@ -43,7 +43,14 @@ public class Job {
     public int hashCode() {
         return Objects.hash(id);
     }
-
+    @Override
+    public String toString() {
+        if (employer == null && location == null && positionType == null && coreCompetency == null && this.getName().equals("Data not available")) return "OOPS! This job does not seem to exist.";
+        if (this.getName().equals("Data not available") && employer.toString().equals("Data not available") && location.toString().equals("Data not available") && positionType.toString().equals("Data not available") && coreCompetency.toString().equals("Data not available")) {
+            return "OOPS! This job does not seem to exist.";
+        }
+        return "\nID: " + id + "\nName: " + this.getName() + "\nEmployer: " + employer + "\nLocation: " + location + "\nPosition Type: " + positionType + "\nCore Competency: " + coreCompetency + "\n" + " ";
+    }
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
@@ -52,6 +59,7 @@ public class Job {
     }
 
     public String getName() {
+        if (name == null || name.isEmpty()) return "Data not available";
         return name;
     }
 
